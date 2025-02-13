@@ -1,0 +1,71 @@
+ ngrok http 3000
+
+C:\Users\Ho Phi Hung\Downloads\ngrok-v3-stable-windows-amd64> .\ngrok.exe http 3000(27017)
+-> lấy đường link đưa lại vào trong callback
+
+npm i -g yarn 
+
+node -v
+
+yarn
+
+yarn start:dev
+
+docker pull ghcr.io/hardingadonis/ligevan-backend:latest
+
+docker run -d -p 3000:3000 --env-file .env ghcr.io/hardingadonis/ligevan-backend:latest
+
+
+docker run -d -p 27017:27017 --name mongodb mongo
+
+
+BE
+yarn
+yarn start:dev
+http://localhost:3000
+
+
+Docker
+.env
+docker pull ghcr.io/hardingadonis/ligevan-backend:latest
+docker run -d -p 3000:3000 --env-file .env ghcr.io/hardingadonis/ligevan-backend:latest
+http://localhost:3000
+
+DATABASE_URL=mongodb://localhost:3000/ligevan
+JWT_SECRET=secret-key
+JWT_EXPIRES=1h
+GOOGLE_OAUTH2_CLIENT_ID=abcxyz
+GOOGLE_OAUTH2_CLIENT_SECRET=secret-key
+GOOGLE_OAUTH2_CLIENT_CALLBACK=http://localhost:3000/api/auth/student/callback
+ALLOWED_ORIGINS=http://localhost:3000,https://localhost:3001
+FRONTEND_URL=http://localhost:5173
+
+
+ZALOPAY_APP_ID=2553
+ZALOPAY_KEY_1=PcY4iZIKFCIdgZvA6ueMcMHHUbRLYjPL
+ZALOPAY_KEY_2=kLtgPl8HHhfvMuDHPwKfgfsY4Ydm9eIz
+ZALOPAY_ENDPOINT=https://sb-openapi.zalopay.vn
+ZALOPAY_CALLBACK=https://5745-2405-4802-a09c-3af0-6ca8-bbd3-a0f-7210.ngrok-free.app/payments/zalopay/callback
+
+MOMO_ACCESSKEY=F8BBA842ECF85
+MOMO_SECRETKEY=K951B6PE1waDMi640xX08PD3vg6EkVlz
+MOMO_PARTNERCODE=MOMO
+MOMO_CALLBACK=https://5745-2405-4802-a09c-3af0-6ca8-bbd3-a0f-7210.ngrok-free.app/api/payments
+MOMO_ENDPOINT=https://test-payment.momo.vn/momo/callback
+
+
+
+FE
+yarn
+yarn dev
+
+VITE_BACKEND_URL=http://localhost:3000
+VITE_GOOGLE_OAUTH2_CLIENT_ID=abcxyz
+VITE_FRONTEND_URL=http://localhost:5173
+VITE_ALLOWED_ORIGINS=http://localhost:3000,https://localhost:3001
+
+
+
+
+
+npm install -D tailwindcss@3 postcss autoprefixer
