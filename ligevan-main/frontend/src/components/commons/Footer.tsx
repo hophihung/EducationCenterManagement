@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
 				Copyright © ligevan 2024
 			</Title>
 			<a
-				href="https://github.com/hardingadonis/ligevan"
+				href="https://github.com/hophihung/EducationCenterManagement/tree/main/ligevan-main"
 				target="_blank"
 				rel="noopener noreferrer"
 			>

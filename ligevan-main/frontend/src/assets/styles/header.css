@@ -21,6 +21,7 @@
 	margin: 0;
 	font-family: cursive;
 	color: white !important;
+	font-size: 1.5rem;  /* Adjust the font size */
 }
 
 .right-component {
@@ -28,4 +29,22 @@
 	display: flex;
 	justify-content: flex-end;
 	padding-right: 16px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+	.title {
+		font-size: 1.2rem;  /* Smaller font size for mobile devices */
+	}
+
+	.left-component, .right-component {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 1rem;  /* Further reduce font size for very small screens */
+	}
 }

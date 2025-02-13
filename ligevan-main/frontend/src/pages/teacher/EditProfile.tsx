@@ -1,4 +1,4 @@
-import { Col, Row, Spin } from 'antd';
+import { Col, Row, Spin, Alert } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,8 +17,8 @@ import { apiBaseUrl } from '@/utils/apiBase';
 const EditProfileTeacher: React.FC = () => {
 	const email = useSelector(selectEmail);
 	const token = useSelector(selectToken);
-	const [isMounted, setIsMounted] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState<string | null>(null);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const EditProfileTeacher: React.FC = () => {
 			navigate('../teacher/login');
 		}
 
-		async function fetchTeacherData() {
+		const fetchTeacherData = async () => {
 			try {
 				const response = await axios.get(
 					`${apiBaseUrl}/api/teachers/email/${email}`,
@@ -36,13 +36,13 @@ const EditProfileTeacher: React.FC = () => {
 					dispatch(setAvatar(response.data.avatar));
 					dispatch(setFullName(response.data.fullName));
 				}
-			} catch (error) {
-				console.error('Failed to load teacher data:', error);
+			} catch (err) {
+				setError('Failed to load teacher data. Please try again later.');
+				console.error('Failed to load teacher data:', err);
 			} finally {
 				setLoading(false);
-				setIsMounted(true);
 			}
-		}
+		};
 
 		fetchTeacherData();
 	}, [token, email, dispatch, navigate]);
@@ -64,8 +64,21 @@ const EditProfileTeacher: React.FC = () => {
 		);
 	}
 
-	if (!isMounted) {
-		return null;
+	if (error) {
+		return (
+			<TeacherLayout>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						height: '100vh',
+					}}
+				>
+					<Alert message={error} type="error" showIcon />
+				</div>
+			</TeacherLayout>
+		);
 	}
 
 	return (
