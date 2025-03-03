@@ -8,9 +8,7 @@
 
 > 「学び、練習し、成功する」
 
-## 📢 Advertisement
 
-<img src="https://raw.githubusercontent.com/fptqnk17/.github/refs/heads/main/images/banner-bao-thu.png" alt="Advertisement" />
 
 ---
 
@@ -21,8 +19,8 @@
 ## Contributors
 
 <div align="center">
-  <a href="https://github.com/hardingadonis/ligevan/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=hardingadonis/ligevan" />
+  <a href="https://github.com/hophihung/EducationCenterManagement/graphs/contributors">
+    <img src="https://github.com/hophihung/EducationCenterManagement.git" />
   </a>
 </div>
 
