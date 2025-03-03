@@ -1,0 +1,20 @@
+{
+	"name": "ligevan",
+	"description": "「学び、練習し、成功する」",
+	"repository": "https://github.com/hardingadonis/ligevan.git",
+	"author": "Minh Vương",
+	"license": "GPL-3.0 license",
+	"private": true,
+	"scripts": {
+		"postinstall": "husky",
+		"lint-staged": "lint-staged"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "19.5.0",
+		"@commitlint/config-conventional": "19.5.0",
+		"@trivago/prettier-plugin-sort-imports": "4.3.0",
+		"husky": "9.1.6",
+		"lint-staged": "15.2.10",
+		"prettier": "3.3.3"
+	}
+}
