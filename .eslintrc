@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  }
+} 

@@ -18,7 +18,10 @@ const bootstrap = async () => {
 
 	app.useGlobalPipes(new ValidationPipe());
 	app.setGlobalPrefix('api');
-	app.enableCors(isProduction ? corsConfig : { origin: '*' });
+	app.enableCors({
+		origin: 'http://localhost:5173',
+		credentials: true,
+	});
 	app.useLogger(
 		isProduction
 			? ['fatal', 'error', 'warn', 'log']

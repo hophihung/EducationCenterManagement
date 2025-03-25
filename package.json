@@ -16,5 +16,9 @@
 		"husky": "9.1.6",
 		"lint-staged": "15.2.10",
 		"prettier": "3.3.3"
+	},
+	"dependencies": {
+		"@ant-design/plots": "^2.3.3",
+		"antd": "^5.24.3"
 	}
 }

@@ -24,22 +24,14 @@ const DropdownCourse: React.FC<DropdownCourseProps> = ({
 			placeholder="Select a course"
 			onChange={onChange}
 			value={selectedCourse}
-			dropdownMatchSelectWidth={false}
+			popupMatchSelectWidth={false}
 		>
-			<Select.Option key="all" value="all">
+			<Select.Option key="all" value="all" label="Tất cả các khóa học">
+				<BookOutlined style={{ marginRight: 8 }} />
 				Tất cả các khóa học
 			</Select.Option>
 			{courses.map((course) => (
-				<Select.Option
-					key={course._id}
-					value={course._id}
-					label={
-						<>
-							<BookOutlined style={{ marginRight: 8 }} />
-							{course.title}
-						</>
-					}
-				>
+				<Select.Option key={course._id} value={course._id} label={course.title}>
 					<BookOutlined style={{ marginRight: 8 }} />
 					{course.title}
 				</Select.Option>

@@ -21,8 +21,7 @@ export const getSalaryById = async (id: string): Promise<Salary> => {
 		console.error('Error fetching salary:', error);
 		throw error;
 	}
-}
-
+};
 
 export const deleteSalary = async (id: string): Promise<void> => {
 	try {
