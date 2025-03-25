@@ -25,9 +25,11 @@ const ListCenters: React.FC = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState<DataType[]>([]);
 	const [searchText, setSearchText] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const fetchData = async () => {
 		try {
+			setLoading(true);
 			const centers: Center[] = await getAllCenter();
 			centers.sort(
 				(a, b) =>
@@ -44,6 +46,8 @@ const ListCenters: React.FC = () => {
 			setData(tableData);
 		} catch (error) {
 			console.error('Lỗi khi lấy danh sách trung tâm:', error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -213,11 +217,17 @@ const ListCenters: React.FC = () => {
 						emptyText: (
 							<Empty
 								description="Không có trung tâm khớp với bạn tìm kiếm"
-								imageStyle={{ height: 60 }}
+								styles={{
+									image: { height: 60 },
+								}}
 							/>
 						),
 					}}
-					pagination={{ pageSize: 7 }}
+					pagination={{
+						pageSize: 7,
+						hideOnSinglePage: true,
+						showSizeChanger: false,
+					}}
 					rowClassName={(_, index) =>
 						index % 2 === 0 ? 'table-row-even' : 'table-row-odd'
 					}
@@ -225,6 +235,10 @@ const ListCenters: React.FC = () => {
 					style={{
 						backgroundColor: '#fff',
 						borderRadius: '10px',
+					}}
+					loading={loading}
+					expandable={{
+						expandIcon: () => null,
 					}}
 				/>
 			</div>

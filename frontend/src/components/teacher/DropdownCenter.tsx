@@ -23,22 +23,14 @@ const DropdownCenter: React.FC<DropdownCenterProps> = ({
 			style={{ width: 200, marginRight: '20px' }}
 			placeholder="Select a center"
 			onChange={onChange}
-			defaultValue={selectedCenter}
+			value={selectedCenter}
 		>
-			<Select.Option key="all" value="all">
+			<Select.Option key="all" value="all" label="Tất cả các trung tâm">
+				<EnvironmentOutlined style={{ marginRight: 8 }} />
 				Tất cả các trung tâm
 			</Select.Option>
 			{centers.map((center) => (
-				<Select.Option
-					key={center._id}
-					value={center._id}
-					label={
-						<>
-							<EnvironmentOutlined style={{ marginRight: 8 }} />
-							{center.name}
-						</>
-					}
-				>
+				<Select.Option key={center._id} value={center._id} label={center.name}>
 					<EnvironmentOutlined style={{ marginRight: 8 }} />
 					{center.name}
 				</Select.Option>

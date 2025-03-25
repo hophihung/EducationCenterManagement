@@ -35,16 +35,6 @@ interface CustomEditorTemplateProps extends EventSettingsModel {
 	onCancel: () => void;
 	isEditMode?: boolean;
 	eventId?: string;
-	scheduleRef?: React.RefObject<{
-		addEvent: (event: {
-			Subject: string;
-			StartTime: string;
-			EndTime: string;
-			Location: string;
-			Description: string;
-		}) => void;
-		closeEditor: () => void;
-	}>;
 }
 
 const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
@@ -70,10 +60,7 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 		const fetchCenters = async () => {
 			try {
 				const centers = await getAllCenter();
-				console.log('Fetched centers:', centers);
-				if (Array.isArray(centers)) {
-					setCenterOptions(centers);
-				}
+				setCenterOptions(centers);
 			} catch (error) {
 				console.error('Error fetching centers:', error);
 				message.error('Không thể tải danh sách trung tâm');
@@ -105,12 +92,14 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 	const handleCenterChange = (value: string) => {
 		try {
 			setSelectedCenter(value);
-			const selectedCenter = centerOptions.find((center) => center._id === value);
+			const selectedCenter = centerOptions.find(
+				(center) => center._id === value,
+			);
 			if (selectedCenter?.classes) {
 				setClassOptions(selectedCenter.classes);
-				props.form.setFieldsValue({ 
+				props.form.setFieldsValue({
 					Subject: undefined,
-					Center: value
+					Center: value,
 				});
 			} else {
 				setClassOptions([]);
@@ -128,7 +117,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 			try {
 				const slots = await getSlotByClass(selectedClass._id);
 				setExistingSlots(slots);
-				console.log('Existing slots for selected class:', slots);
 			} catch (error) {
 				console.error('Error fetching slots for class:', error);
 			}
@@ -136,17 +124,8 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 	};
 
 	const handleStartTimeChange = (time: Dayjs | null) => {
-		if (time && startTime) {
-			const updatedStartTime = time
-				.set('year', startTime.year())
-				.set('month', startTime.month())
-				.set('date', startTime.date());
-			setStartTime(updatedStartTime);
-			props.form.setFieldsValue({ StartTime: updatedStartTime });
-		} else {
-			setStartTime(time);
-			props.form.setFieldsValue({ StartTime: time });
-		}
+		setStartTime(time);
+		props.form.setFieldsValue({ StartTime: time });
 	};
 
 	const handleEndTimeChange = (time: Dayjs | null) => {
@@ -216,7 +195,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 				return;
 			}
 
-			console.log('Checking for conflicts with existing slots:', existingSlots);
 			if (checkForConflicts(initialSlot.start, initialSlot.end)) {
 				message.error(
 					'Lớp học này đã có tiết học trùng với thời gian bạn chọn',
@@ -245,18 +223,7 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 				message.success('Cập nhật khoá học thành công!');
 			} else {
 				await createAndLogSlot(initialSlot);
-
-				const newEvent = {
-					Subject: values.Subject,
-					StartTime: values.StartTime.toISOString(),
-					EndTime: values.EndTime.toISOString(),
-					Location: values.Location,
-					Description: 'Chưa dạy',
-				};
-
-				if (props.scheduleRef?.current) {
-					props.scheduleRef.current.addEvent(newEvent);
-				}
+				message.success('Thêm khoá học thành công!');
 
 				if (repeatEvent) {
 					const daysMap = {
@@ -310,17 +277,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 							}
 
 							await createAndLogSlot(repeatedSlot);
-
-							const repeatedEvent = {
-								...newEvent,
-								StartTime: repeatedSlot.start.toISOString(),
-								EndTime: repeatedSlot.end.toISOString(),
-							};
-
-							if (props.scheduleRef?.current) {
-								props.scheduleRef.current.addEvent(repeatedEvent);
-							}
-
 							createdSlots++;
 						}
 						currentDate = currentDate.add(1, 'week');
@@ -328,9 +284,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 				}
 			}
 
-			if (props.scheduleRef?.current) {
-				props.scheduleRef.current.closeEditor();
-			}
 			props.onSave();
 		} catch (error) {
 			console.error('Validation failed or error creating slot:', error);
@@ -339,6 +292,7 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 	};
 
 	const handleCancel = () => {
+		props.form.resetFields();
 		props.onCancel();
 	};
 
@@ -370,8 +324,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 					onChange={handleCenterChange}
 					placeholder="Vui lòng chọn một trung tâm"
 					style={{ width: '100%' }}
-					dropdownStyle={{ zIndex: 9999 }}
-					getPopupContainer={(trigger) => trigger.parentElement}
 				>
 					{centerOptions.map((center) => (
 						<Select.Option key={center._id} value={center._id}>
@@ -419,7 +371,6 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 					format="HH:mm"
 					value={startTime}
 					onChange={handleStartTimeChange}
-					popupClassName="custom-time-picker-dropdown"
 				/>
 			</Form.Item>
 			<Form.Item
@@ -495,41 +446,16 @@ const CustomEditorTemplate: React.FC<CustomEditorTemplateProps> = (props) => {
 					)}
 				</>
 			)}
-			<Form.Item>
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'flex-end',
-					}}
-				>
-					<Button type="primary" onClick={handleSave}>
-						Lưu Lại
-					</Button>
-					<Button style={{ marginLeft: '8px' }} onClick={handleCancel}>
-						Huỷ Bỏ
-					</Button>
-				</div>
+			<Form.Item style={{ marginTop: '20px', textAlign: 'right' }}>
+				<Button onClick={handleCancel} style={{ marginRight: 8 }}>
+					Hủy
+				</Button>
+				<Button type="primary" onClick={handleSave}>
+					Lưu
+				</Button>
 			</Form.Item>
 		</Form>
 	);
 };
-
-const styles = `
-.ant-select-dropdown {
-	z-index: 9999 !important;
-}
-
-.e-schedule-dialog {
-	z-index: 9998 !important;
-}
-
-.ant-select {
-	width: 100%;
-}
-`;
-
-const styleSheet = document.createElement('style');
-styleSheet.innerText = styles;
-document.head.appendChild(styleSheet);
 
 export default CustomEditorTemplate;

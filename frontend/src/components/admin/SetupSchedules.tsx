@@ -22,12 +22,11 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import '@syncfusion/ej2-react-schedule/styles/material.css';
 import '@syncfusion/ej2-splitbuttons/styles/material.css';
-import { Button, Col, Form, Row, Tag, Typography } from 'antd';
+import { Button, Col, Form, Modal, Row, Tag, Typography } from 'antd';
 import * as gregorian from 'cldr-data/main/vi/ca-gregorian.json';
 import * as numberingSystems from 'cldr-data/main/vi/numbers.json';
 import * as timeZoneNames from 'cldr-data/main/vi/timeZoneNames.json';
 import * as weekData from 'cldr-data/supplemental/weekData.json';
-import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 
 import CustomEditorTemplate from '@/components/admin/CustomEditorTemplate';
@@ -64,7 +63,7 @@ interface ExtendedSlot extends Slot {
 }
 
 const SetupSchedules: React.FC = () => {
-	const [form] = Form.useForm(); // Create a form instance
+	const [form] = Form.useForm();
 	const [slots, setSlots] = useState<ExtendedSlot[]>([]);
 	const [centers, setCenters] = useState<Center[]>([]);
 	const [selectedCenter, setSelectedCenter] = useState<string | undefined>(
@@ -74,6 +73,8 @@ const SetupSchedules: React.FC = () => {
 	const [selectedCourse, setSelectedCourse] = useState<string | undefined>(
 		'all',
 	);
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [modalData, setModalData] = useState<Record<string, unknown>>({});
 	const scheduleRef = useRef<ScheduleComponent>(null);
 
 	const fetchSlots = async () => {
@@ -214,7 +215,6 @@ const SetupSchedules: React.FC = () => {
 		cancel: boolean;
 	}) => {
 		const currentDate = new Date();
-		const titleElement = document.querySelector('.e-title-text');
 		if (args.type === 'QuickInfo' && !('Id' in args.data)) {
 			const startTime = args.data.StartTime as Date;
 			if (startTime.getTime() < currentDate.setHours(0, 0, 0, 0)) {
@@ -222,51 +222,42 @@ const SetupSchedules: React.FC = () => {
 				return;
 			}
 			args.cancel = true;
-			scheduleRef.current?.openEditor(args.data, 'Add');
-			if (titleElement) {
-				titleElement.textContent = 'Thêm lịch học';
-			}
+			setModalData(args.data);
+			setIsModalVisible(true);
 		} else if (args.type === 'Editor') {
+			args.cancel = true;
 			const startTime = args.data.StartTime as Date;
 			if (startTime.getTime() < currentDate.setHours(0, 0, 0, 0)) {
-				args.cancel = true;
 				return;
 			}
-			if (!args.data.Id) {
-				form.resetFields();
-				if (titleElement) {
-					titleElement.textContent = 'Thêm lịch học';
-				}
-			} else {
-				const center = centers.find(
-					(center) => center.name === args.data.CenterName,
-				);
-				const selectedClass = center?.classes?.find(
-					(cls) => cls._id === args.data.classId,
-				);
-				form.setFieldsValue({
-					StartTime: moment(args.data.StartTime as string),
-					EndTime: moment(args.data.EndTime as string),
-					Subject: selectedClass ? selectedClass.name : args.data.Subject,
-					Location: args.data.Location,
-					Center: center ? center._id : undefined,
-				});
-				if (titleElement) {
-					titleElement.textContent = 'Chỉnh sửa lịch học';
-				}
-			}
+			setModalData(args.data);
+			setIsModalVisible(true);
 		}
 	};
 
-	const onPopupClose = async (args: {
-		type: string;
-		data: Record<string, unknown>;
-		element: HTMLElement;
-		cancel: boolean;
-	}) => {
-		if (args.type === 'Editor' && !args.data.Id && !args.cancel) {
-			args.cancel = true;
-		}
+	const handleModalOk = () => {
+		form.validateFields().then(() => {
+			const values = form.getFieldsValue();
+			const newEvent = {
+				Subject: values.Subject,
+				StartTime: values.StartTime.toISOString(),
+				EndTime: values.EndTime.toISOString(),
+				Location: values.Location,
+				Description: 'Chưa dạy',
+			};
+
+			if (scheduleRef.current) {
+				scheduleRef.current.addEvent(newEvent);
+			}
+			setIsModalVisible(false);
+			form.resetFields();
+			fetchSlots();
+		});
+	};
+
+	const handleModalCancel = () => {
+		setIsModalVisible(false);
+		form.resetFields();
 	};
 
 	return (
@@ -319,25 +310,40 @@ const SetupSchedules: React.FC = () => {
 				locale="vi"
 				style={{ marginTop: '15px' }}
 				views={['Day', 'Week', 'WorkWeek', 'Month']}
-				editorTemplate={(props: { [key: string]: unknown }) => (
-					<CustomEditorTemplate
-						{...props}
-						form={form}
-						onSave={() => {
-							scheduleRef.current?.closeEditor();
-							fetchSlots();
-						}}
-						onCancel={() => scheduleRef.current?.closeEditor()}
-						isEditMode={!!props.Id}
-						eventId={props.Id as string}
-					/>
-				)}
 				popupOpen={onPopupOpen}
-				popupClose={onPopupClose}
 				quickInfoTemplates={null}
+				enablePersistence={false}
+				enableRtl={false}
+				showQuickInfo={false}
+				showHeaderBar={true}
+				allowDragAndDrop={false}
+				allowResizing={false}
+				allowInline={false}
+				allowKeyboardInteraction={true}
 			>
 				<Inject services={[Day, Week, WorkWeek, Month]} />
 			</ScheduleComponent>
+
+			<Modal
+				title={modalData.Id ? 'Chỉnh sửa lịch học' : 'Thêm lịch học'}
+				open={isModalVisible}
+				onOk={handleModalOk}
+				onCancel={handleModalCancel}
+				width={600}
+				destroyOnClose
+			>
+				<CustomEditorTemplate
+					form={form}
+					onSave={handleModalOk}
+					onCancel={handleModalCancel}
+					isEditMode={!!modalData.Id}
+					eventId={modalData.Id as string}
+					StartTime={modalData.StartTime as Date}
+					EndTime={modalData.EndTime as Date}
+					Subject={modalData.Subject as string}
+					Location={modalData.Location as string}
+				/>
+			</Modal>
 		</div>
 	);
 };

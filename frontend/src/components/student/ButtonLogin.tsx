@@ -14,10 +14,10 @@ import { apiBaseUrl } from '@/utils/apiBase';
 const ButtonLogin: React.FC = () => {
 	const navigate = useNavigate();
 	const isMobile = useMediaQuery({ maxWidth: 767 });
-	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleLogin = () => {
-		setIsModalVisible(true);
+		setIsModalOpen(true);
 	};
 
 	const handleStudentLogin = () => {
@@ -34,7 +34,7 @@ const ButtonLogin: React.FC = () => {
 	};
 
 	const handleCancel = () => {
-		setIsModalVisible(false);
+		setIsModalOpen(false);
 	};
 
 	React.useEffect(() => {
@@ -61,7 +61,7 @@ const ButtonLogin: React.FC = () => {
 						Chọn phương thức đăng nhập
 					</div>
 				}
-				visible={isModalVisible}
+				open={isModalOpen} // Thay visible thành open
 				onCancel={handleCancel}
 				footer={null}
 			>
