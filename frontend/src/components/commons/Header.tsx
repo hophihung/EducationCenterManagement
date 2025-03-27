@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ leftComponent, rightComponent }) => {
 				<div className="center-title">
 					<a href="/">
 						<Title level={3} className="title">
-							ligevan
+							Acedemy
 						</Title>
 					</a>
 				</div>

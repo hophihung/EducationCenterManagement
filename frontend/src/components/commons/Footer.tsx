@@ -21,13 +21,13 @@ const Footer: React.FC = () => {
 				Copyright © ligevan 2024
 			</Title>
 			<a
-				href="https://github.com/hardingadonis/ligevan"
+				href="https://github.com/hophihung/EducationCenterManagement"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
 				<img
 					alt="contributors"
-					src="https://contrib.rocks/image?repo=hardingadonis/ligevan"
+					src="https://contrib.rocks/image?repo=hophihung/EducationCenterManagement"
 					style={{ transform: 'scale(0.65)' }}
 				/>
 			</a>
