@@ -216,7 +216,7 @@ const TeacherForm: React.FC = () => {
 										>
 											<Input
 												placeholder="Nhập tên (ví dụ: username)"
-												addonAfter="@ligevan.edu.vn"
+												addonAfter="@Vip.edu.vn"
 											/>
 										</Form.Item>
 									</Col>
