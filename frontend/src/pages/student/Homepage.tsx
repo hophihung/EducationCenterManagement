@@ -11,7 +11,6 @@ const HomepageStudent: React.FC = () => {
 	return (
 		<StudentLayoutNoSidebar onSelectCenter={setSelectedCenter}>
 			<Typography.Title level={1} style={{ textAlign: 'center' }}>
-<!-- <<<<<<< hienupdate -->
 				✧ Study hard, shine bright ✧
 
 
