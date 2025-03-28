@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
 			<Title level={5} style={{ margin: '10px 0 0 0' ,color: 'white'}}>
 				Copyright © LangLA_Academy 2024
 			</Title>
+
 		</AntFooter>
 	);
 };
