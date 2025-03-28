@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, Typography, Modal } from 'antd';
+import { Button, Form, Input, Typography, Modal, Layout, Col, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
-import AdminLayout from '@/layouts/admin';
 import { getAdminByUsername } from '@/services/api/admin';
 import { fetchLogin } from '@/services/api/auth';
+import AdminLayout from '@/layouts/admin';
 
-const { Text, Title } = Typography;
+const {  Title } = Typography;
+const { Content } = Layout;
 
 interface LoginFormValues {
   username: string;
@@ -68,127 +68,131 @@ const AdminLogin: React.FC = () => {
 
   return (
     <AdminLayout showSidebar={false}>
-      <div 
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          backgroundColor: 'white',
-          padding: '20px'
-        }}
-      >
-        <div 
-          style={{
-            backgroundColor: 'white',
-            borderRadius: '26px',
-            border: '4px solid black',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-            width: '100%',
-            maxWidth: '400px',
-            padding: '50px'
-          }}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <Title 
-              level={3} 
-              style={{ 
-                margin: 0, 
-                marginBottom: '8px',
-                color: '#333'
-              }}
-            >
-              Sign In
-            </Title>
-            <Text 
-              type="secondary" 
-              style={{ 
-                fontSize: '14px',
-                color: '#6c757d' 
-              }}
-            >
-              Đăng nhập vào trang quản trị
-            </Text>
-          </div>
-          <Form 
-            name="login" 
-            onFinish={onFinish} 
-            layout="vertical"
+      <Layout style={{ minHeight: '100vh' }}>
+        <Content>
+          <Row
+            justify="center"
+            align="middle"
+            style={{ height: 'calc(100vh - 134px)' }}
           >
-            <Form.Item
-              name="username"
-              label="Tên đăng nhập"
-              rules={[
-                { required: true, message: 'Vui lòng nhập tên đăng nhập!' },
-              ]}
-            >
-              <Input 
-                placeholder="Nhập tên đăng nhập" 
-                size="large"
+            <Col xs={22} sm={18} md={12} lg={8}>
+              <div
                 style={{
-                  borderRadius: '8px'
-                }}
-              />
-            </Form.Item>
-
-            <Form.Item
-              name="password"
-              label="Mật khẩu"
-              rules={[
-                { required: true, message: 'Vui lòng nhập mật khẩu!' },
-              ]}
-            >
-              <Input.Password 
-                placeholder="Nhập mật khẩu" 
-                size="large"
-                style={{
-                  borderRadius: '8px'
-                }}
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                loading={loading}
-                block
-                style={{
-                  height: '48px',
-                  borderRadius: '8px',
-                  backgroundColor: '#2c3e50',
-                  borderColor: '#2c3e50',
-                  fontSize: '16px',
-                  fontWeight: 'bold'
+                  backgroundColor: 'white',
+                  padding: '32px',
+                  borderRadius: '12px',
+                  border: '2px solid #ddd', // Lighter border for better look
+                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Subtle shadow
                 }}
               >
-                Đăng Nhập
-              </Button>
-            </Form.Item>
-          </Form>
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <Title
+                    level={3}
+                    style={{
+                      fontFamily: 'cursive',
+                      margin: 0,
+                      marginBottom: '8px',
+                    }}
+                  >
+                    Lang La Academy
+                  </Title>
+                  <Title
+                    level={2}
+                    style={{
+                      textAlign: 'center',
+                      marginBottom: '24px',
+                      fontSize: '1.5rem',
+                      color: '#333',
+                    }}
+                  >
+                    Đăng nhập
+                  </Title>
+                </div>
 
-          <Modal
-            title="Đăng nhập thất bại"
-            open={!!error}
-            onCancel={handleCloseError}
-            footer={[
-              <Button
-                key="ok"
-                onClick={handleCloseError}
-                style={{
-                  backgroundColor: 'black',
-                  borderColor: 'black',
-                  color: 'white',
-                }}
+                <Form
+                  name="login"
+                  onFinish={onFinish}
+                  layout="vertical"
+                >
+                  <Form.Item
+                    name="username"
+                    label="Tên đăng nhập"
+                    rules={[{ required: true, message: 'Vui lòng nhập tên đăng nhập!' }]}
+                  >
+                    <Input
+                      placeholder="Nhập tên đăng nhập"
+                      size="large"
+                      style={{
+                        borderRadius: '8px',
+                        border: '1px solid #ddd',
+                        padding: '12px 16px',
+                        fontSize: '16px',
+                      }}
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    name="password"
+                    label="Mật khẩu"
+                    rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+                  >
+                    <Input.Password
+                      placeholder="Nhập mật khẩu"
+                      size="large"
+                      style={{
+                        borderRadius: '8px',
+                        border: '1px solid #ddd',
+                        padding: '12px 16px',
+                        fontSize: '16px',
+                      }}
+                    />
+                  </Form.Item>
+
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      loading={loading}
+                      block
+                      style={{
+                        marginTop: '16px',
+                        backgroundColor: '#49BBBD',
+                        height: '48px',
+                        borderRadius: '8px',
+                        fontSize: '16px',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for button
+                      }}
+                    >
+                      Đăng Nhập
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
+
+              <Modal
+                title="Đăng nhập thất bại"
+                open={!!error}
+                onCancel={handleCloseError}
+                footer={[
+                  <Button
+                    key="ok"
+                    onClick={handleCloseError}
+                    type="primary"
+                    style={{
+                      backgroundColor: '#e74c3c',
+                      borderColor: '#e74c3c',
+                    }}
+                  >
+                    OK
+                  </Button>,
+                ]}
               >
-                OK
-              </Button>,
-            ]}
-          >
-            <p>{error}</p>
-          </Modal>
-        </div>
-      </div>
+                <p>{error}</p>
+              </Modal>
+            </Col>
+          </Row>
+        </Content>
+      </Layout>
     </AdminLayout>
   );
 };

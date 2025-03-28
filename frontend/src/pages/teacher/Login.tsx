@@ -1,174 +1,226 @@
-// LoginTeacher.tsx
-import {
-	selectEmail,
-	selectToken,
-	setEmail,
-	setToken,
-} from '../../slices/teacher';
-import { Button, Col, Form, Input, Layout, Modal, Row, Typography } from 'antd';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { Button, Form, Input, Typography, Modal, Layout, Col, Row } from 'antd';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios, { AxiosError } from 'axios';
 
-import Footer from '@/components/commons/Footer';
-import Header from '@/components/commons/Header';
+import { setEmail, setToken } from '../../slices/teacher';
 import { apiBaseUrl } from '@/utils/apiBase';
+import Header from '@/components/commons/Header';
+import Footer from '@/components/commons/Footer';
 
 const { Title } = Typography;
 const { Content } = Layout;
 
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
+interface LoginErrorResponse {
+  message?: string;
+}
+
 const LoginTeacher: React.FC = () => {
-	const token = useSelector(selectToken);
-	const email = useSelector(selectEmail);
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-	const [isMounted, setIsMounted] = useState(false);
+  const [form] = Form.useForm<LoginFormValues>();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
 
-	useEffect(() => {
-		const token = localStorage.getItem('teacherToken');
-		if (token) {
-			navigate('/teacher/classes');
-		}
-	}, [navigate]);
+  React.useEffect(() => {
+    const teacherToken = localStorage.getItem('teacherToken');
+    if (teacherToken) {
+      navigate('/teacher/classes');
+    }
+  }, [navigate]);
 
-	useEffect(() => {
-		if (!token && !email) {
-			navigate('../teacher/login');
-		}
-	}, [token, email, navigate]);
+  const handleLogin = async (values: LoginFormValues) => {
+    setIsLoading(true);
+    setErrorMessage(null);
 
-	useEffect(() => {
-		setIsMounted(true);
-	}, []);
+    try {
+      const response = await axios.post(
+        `${apiBaseUrl}/api/auth/teacher/login`,
+        {
+          email: values.email,
+          password: values.password,
+        }
+      );
 
-	const onFinish = async (values: { email: string; password: string }) => {
-		setLoading(true);
-		try {
-			const response = await axios.post(
-				apiBaseUrl + '/api/auth/teacher/login',
-				{
-					email: values.email,
-					password: values.password,
-				},
-			);
+      const { access_token } = response.data;
+      dispatch(setToken(access_token));
+      dispatch(setEmail(values.email));
 
-			dispatch(setToken(response.data.access_token));
-			dispatch(setEmail(values.email));
-			localStorage.setItem('teacherToken', response.data.access_token);
-			localStorage.setItem('teacherEmail', values.email);
+      localStorage.setItem('teacherToken', access_token);
+      localStorage.setItem('teacherEmail', values.email);
 
-			navigate('/teacher/classes');
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		} catch (error: any) {
-			setError('Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.');
-			console.error(
-				'Error logging in:',
-				error.response ? error.response.data : error.message,
-			);
-		} finally {
-			setLoading(false);
-		}
-	};
+      navigate('/teacher/classes');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<LoginErrorResponse>;
+        const errorMsg = axiosError.response?.data?.message ||
+          'Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.';
+        setErrorMessage(errorMsg);
+        console.error('Login error:', axiosError.response?.data);
+      } else {
+        setErrorMessage('Đã xảy ra lỗi không xác định. Vui lòng thử lại.');
+        console.error('Unexpected error:', error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	const handleCloseError = () => {
-		setError(null);
-	};
+  const handleCloseErrorModal = () => {
+    setErrorMessage(null);
+  };
 
-	if (!isMounted) return null;
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Header />
+      <Content>
+        <Row justify="center" align="middle" style={{ height: 'calc(100vh - 134px)' }}>
+          <Col xs={22} sm={18} md={12} lg={8}>
+            <div
+              style={{
+                backgroundColor: 'white',
+                padding: '32px',
+                borderRadius: '12px',
+                border: '2px solid #ddd', // Lighter border for better look
+                boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Subtle shadow
+              }}
+            >
+              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                <Title
+                  level={3}
+                  style={{
+                    fontFamily: 'cursive',
+                    margin: 0,
+                    marginBottom: '8px',
+                  }}
+                >
+                  Lang La Academy
+                </Title>
+                <Title
+                  level={2}
+                  style={{
+                    textAlign: 'center',
+                    marginBottom: '24px',
+                    fontSize: '1.5rem',
+                    color: '#333',
+                  }}
+                >
+                  Đăng nhập
+                </Title>
+              </div>
 
-	return (
-		<Layout style={{ minHeight: '100vh' }}>
-			<Header />
-			<Content>
-				<Row
-					justify="center"
-					align="middle"
-					style={{ height: 'calc(100vh - 134px)' }}
-				>
-					<Col xs={22} sm={18} md={12} lg={8}>
-						<div
-							style={{
-								backgroundColor: '#ffff',
-								padding: '32px',
-								borderRadius: '8px',
-								boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-							}}
-						>
-							<div style={{ flex: 1, textAlign: 'center' }}>
-								<Title level={3} style={{ fontFamily: 'cursive', margin: 0 }}>
-									Lang La Academy
-								</Title>
-							</div>
+              <Form
+                form={form}
+                name="login"
+                onFinish={handleLogin}
+                layout="vertical"
+              >
+                <Form.Item
+                  label="Email"
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng nhập email của bạn!',
+                    },
+                    {
+                      type: 'email',
+                      message: 'Vui lòng nhập địa chỉ email hợp lệ!',
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Nhập email"
+                    size="large"
+                    style={{
+                      borderRadius: '8px',
+                      border: '1px solid #ddd',
+                      padding: '12px 16px',
+                      fontSize: '16px',
+                    }}
+                  />
+                </Form.Item>
 
-							<Title
-								level={2}
-								style={{ textAlign: 'center', marginBottom: '24px' }}
-							>
-								Đăng nhập
-							</Title>
+                <Form.Item
+                  label="Mật khẩu"
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng nhập mật khẩu của bạn!',
+                    },
+                    {
+                      min: 6,
+                      message: 'Mật khẩu phải có ít nhất 6 ký tự!',
+                    },
+                  ]}
+                >
+                  <Input.Password
+                    placeholder="Nhập mật khẩu"
+                    size="large"
+                    style={{
+                      borderRadius: '8px',
+                      border: '1px solid #ddd',
+                      padding: '12px 16px',
+                      fontSize: '16px',
+                    }}
+                  />
+                </Form.Item>
 
-							<Form name="login" onFinish={onFinish} layout="vertical">
-								<Form.Item
-									label="Email"
-									name="email"
-									rules={[
-										{ required: true, message: 'Vui lòng nhập email của bạn!' },
-									]}
-								>
-									<Input placeholder="Nhập email" />
-								</Form.Item>
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    loading={isLoading}
+                    block
+                    style={{
+                      marginTop: '16px',
+                      backgroundColor: '#49BBBD',
+                      height: '48px',
+                      borderRadius: '8px',
+                      fontSize: '16px',
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow for button
+                    }}
+                  >
+                    Đăng Nhập
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
 
-								<Form.Item
-									label="Mật khẩu"
-									name="password"
-									rules={[
-										{
-											required: true,
-											message: 'Vui lòng nhập mật khẩu của bạn!',
-										},
-									]}
-								>
-									<Input.Password placeholder="Nhập mật khẩu" />
-								</Form.Item>
-
-								<Form.Item>
-									<Button
-										type="primary"
-										htmlType="submit"
-										loading={loading}
-										block
-										style={{ marginTop: '16px', backgroundColor: '#49BBBD' }}
-									>
-										Đăng Nhập
-									</Button>
-								</Form.Item>
-							</Form>
-						</div>
-
-						{error && (
-							<Modal
-								title="Đăng nhập thất bại"
-								visible={!!error}
-								onCancel={handleCloseError}
-								footer={[
-									<Button key="ok" onClick={handleCloseError}>
-										OK
-									</Button>,
-								]}
-							>
-								<p>{error}</p>
-							</Modal>
-						)}
-					</Col>
-				</Row>
-			</Content>
-			<Footer />
-		</Layout>
-	);
+            <Modal
+              title="Đăng nhập thất bại"
+              open={!!errorMessage}
+              onCancel={handleCloseErrorModal}
+              footer={[
+                <Button
+                  key="ok"
+                  onClick={handleCloseErrorModal}
+                  type="primary"
+                  style={{
+                    backgroundColor: '#e74c3c',
+                    borderColor: '#e74c3c',
+                  }}
+                >
+                  OK
+                </Button>,
+              ]}
+            >
+              <p>{errorMessage}</p>
+            </Modal>
+          </Col>
+        </Row>
+      </Content>
+      <Footer />
+    </Layout>
+  );
 };
 
 export default LoginTeacher;
