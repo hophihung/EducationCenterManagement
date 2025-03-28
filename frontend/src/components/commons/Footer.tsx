@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 		<AntFooter
 			style={{
 				textAlign: 'center',
-				backgroundColor: '#001529',
+				backgroundColor: '#49BBBD',
 				padding: 30,
 				boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.1)',
 				width: '100%',

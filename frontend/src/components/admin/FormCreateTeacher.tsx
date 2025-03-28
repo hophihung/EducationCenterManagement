@@ -82,7 +82,6 @@ const TeacherForm: React.FC = () => {
 		avatar: string;
 		classes: string[];
 	}) => {
-<!-- <<<<<<< hienupdate -->
 		const email = `${values.email}@academy.edu.vn`;
 
 

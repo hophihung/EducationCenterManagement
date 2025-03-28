@@ -24,8 +24,8 @@ const CenterForm: React.FC<CenterFormProps> = ({ onSuccess }) => {
 	const onFinish = async (values: Partial<Center>) => {
 		setLoading(true);
 		try {
-			if (values.email && !values.email.endsWith('@Academy.edu.vn')) {
-				values.email = values.email + '@Academy.edu.vn';
+			if (values.email && !values.email.endsWith('@academy.edu.vn')) {
+				values.email = values.email + '@academy.edu.vn';
 			}
 
 			const centerData: Center = {
@@ -134,7 +134,7 @@ const CenterForm: React.FC<CenterFormProps> = ({ onSuccess }) => {
 								>
 									<Input
 										placeholder="Nhập tên (ví dụ: username)"
-										addonAfter="@Academy.edu.vn"
+										addonAfter="@ligevan.edu.vn"
 									/>
 								</Form.Item>
 
