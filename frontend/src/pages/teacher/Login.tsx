@@ -100,7 +100,7 @@ const LoginTeacher: React.FC = () => {
 						>
 							<div style={{ flex: 1, textAlign: 'center' }}>
 								<Title level={3} style={{ fontFamily: 'cursive', margin: 0 }}>
-									ligevan
+									Lang La Academy
 								</Title>
 							</div>
 

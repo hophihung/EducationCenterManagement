@@ -36,8 +36,8 @@ const FormEditCenter: React.FC = () => {
 			try {
 				if (id) {
 					const center = await getCenterById(id);
-					if (center?.email?.endsWith('@ligevan.edu.vn')) {
-						center.email = center.email.replace('@ligevan.edu.vn', '');
+					if (center?.email?.endsWith('@Academy.edu.vn')) {
+						center.email = center.email.replace('@Academy.edu.vn', '');
 					}
 
 					form.setFieldsValue(center);
@@ -53,8 +53,8 @@ const FormEditCenter: React.FC = () => {
 
 	const onFinish = async (values: Partial<Center>) => {
 		if (id) {
-			if (values.email && !values.email.endsWith('@ligevan.edu.vn')) {
-				values.email = values.email + '@ligevan.edu.vn';
+			if (values.email && !values.email.endsWith('@Academy.edu.vn')) {
+				values.email = values.email + '@Academy.edu.vn';
 			}
 
 			dispatch(updateCenterPending());
@@ -147,7 +147,7 @@ const FormEditCenter: React.FC = () => {
 							label={<span style={{ fontWeight: 'bold' }}>Email</span>}
 							rules={[{ validator: validateEmail }]}
 						>
-							<Input addonAfter="@ligevan.edu.vn" />
+							<Input addonAfter="@Academy.edu.vn" />
 						</Form.Item>
 						<Form.Item
 							name="address"

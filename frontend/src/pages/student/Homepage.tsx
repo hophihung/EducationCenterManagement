@@ -11,7 +11,7 @@ const HomepageStudent: React.FC = () => {
 	return (
 		<StudentLayoutNoSidebar onSelectCenter={setSelectedCenter}>
 			<Typography.Title level={1} style={{ textAlign: 'center' }}>
-				「学び、練習し、成功する」
+				「知識を得て、努力し、夢を叶える」
 			</Typography.Title>
 			<ListCourse selectedCenter={selectedCenter} />
 		</StudentLayoutNoSidebar>

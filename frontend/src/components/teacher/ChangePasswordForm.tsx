@@ -76,7 +76,7 @@ const ChangePasswordForm: React.FC = () => {
 
 	return (
 		<div style={{ padding: '90px 0 50px 0' }}>
-			<Row>
+			<Row justify="center">
 				<Col span={24}>
 					<Form
 						name="changePassword"
@@ -86,7 +86,7 @@ const ChangePasswordForm: React.FC = () => {
 							maxWidth: 500,
 							margin: '0 auto',
 							padding: '30px',
-							boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+							boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
 							borderRadius: '8px',
 							backgroundColor: '#f5f5f5',
 						}}
@@ -94,7 +94,7 @@ const ChangePasswordForm: React.FC = () => {
 						<div style={{ textAlign: 'center' }}>
 							<Title level={2}>Đổi mật khẩu</Title>
 							<Title level={3} style={{ fontFamily: 'cursive', margin: 0 }}>
-								ligevan
+								Lang La Academy
 							</Title>
 						</div>
 
@@ -103,7 +103,7 @@ const ChangePasswordForm: React.FC = () => {
 							name="email"
 							rules={[{ required: true, message: 'Vui lòng nhập email!' }]}
 						>
-							<Input placeholder="Nhập email" />
+							<Input placeholder="Nhập email" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 
 						<Form.Item
@@ -113,7 +113,7 @@ const ChangePasswordForm: React.FC = () => {
 								{ required: true, message: 'Vui lòng nhập mật khẩu hiện tại!' },
 							]}
 						>
-							<Input.Password placeholder="Nhập mật khẩu hiện tại" />
+							<Input.Password placeholder="Nhập mật khẩu hiện tại" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 
 						<Form.Item
@@ -135,7 +135,7 @@ const ChangePasswordForm: React.FC = () => {
 								}),
 							]}
 						>
-							<Input.Password placeholder="Nhập mật khẩu mới" />
+							<Input.Password placeholder="Nhập mật khẩu mới" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 
 						<Form.Item
@@ -156,7 +156,7 @@ const ChangePasswordForm: React.FC = () => {
 								}),
 							]}
 						>
-							<Input.Password placeholder="Nhập lại mật khẩu mới" />
+							<Input.Password placeholder="Nhập lại mật khẩu mới" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 
 						<Form.Item>
@@ -167,6 +167,8 @@ const ChangePasswordForm: React.FC = () => {
 								style={{
 									width: '100%',
 									backgroundColor: 'black',
+									border: 'none',
+									borderRadius: '5px',
 								}}
 								icon={<EditOutlined />}
 							>
