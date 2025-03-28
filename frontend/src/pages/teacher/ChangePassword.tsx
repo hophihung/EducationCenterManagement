@@ -1,4 +1,4 @@
-import { Layout, Spin } from 'antd';
+import { Layout, Spin, Typography } from 'antd';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +19,7 @@ import {
 import { apiBaseUrl } from '@/utils/apiBase';
 
 const { Content } = Layout;
+const { Title } = Typography;
 
 const ChangePasswordPage: React.FC = () => {
 	const email = useSelector(selectEmail);
@@ -47,6 +48,7 @@ const ChangePasswordPage: React.FC = () => {
 				}
 			} catch (error) {
 				console.error('Failed to load teacher data:', error);
+				// Optionally, you can set an error state to display an error message to the user
 			}
 		}
 
@@ -63,10 +65,14 @@ const ChangePasswordPage: React.FC = () => {
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
-							height: '100vh',
+							height: '80vh',
+							flexDirection: 'column',
 						}}
 					>
 						<Spin size="large" />
+						<Title level={4} style={{ marginTop: '20px' }}>
+							Đang tải dữ liệu...
+						</Title>
 					</div>
 				</Content>
 				<Footer />

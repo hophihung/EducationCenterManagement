@@ -39,7 +39,7 @@ const ButtonLogin: React.FC = () => {
 
 	const modalProps: ModalProps = {
 		title: 'Đăng nhập',
-		open: isModalOpen, // Thay visible bằng open để fix warning
+		open: isModalOpen,
 		onOk: handleOk,
 		onCancel: handleCancel,
 		destroyOnClose: true,
@@ -52,7 +52,6 @@ const ButtonLogin: React.FC = () => {
 	};
 
 	const loginUser = async ({ username, password }: LoginFormValues) => {
-		// Giả lập API call
 		return new Promise<void>((resolve, reject) => {
 			setTimeout(() => {
 				if (username && password) {
@@ -67,7 +66,9 @@ const ButtonLogin: React.FC = () => {
 
 	return (
 		<>
+<!-- <<<<<<< hienupdate -->
 			<Button type="primary" onClick={showModal} >
+
 				Đăng nhập
 			</Button>
 			<Button
@@ -93,7 +94,7 @@ const ButtonLogin: React.FC = () => {
 							{ min: 3, message: 'Tên đăng nhập phải dài ít nhất 3 ký tự' },
 						]}
 					>
-						<Input placeholder="Nhập tên đăng nhập" autoFocus />
+						<Input placeholder="Nhập tên đăng nhập" style={{ borderRadius: '5px' }} />
 					</Form.Item>
 
 					<Form.Item
@@ -104,7 +105,7 @@ const ButtonLogin: React.FC = () => {
 							{ min: 6, message: 'Mật khẩu phải dài ít nhất 6 ký tự' },
 						]}
 					>
-						<Input.Password placeholder="Nhập mật khẩu" />
+						<Input.Password placeholder="Nhập mật khẩu" style={{ borderRadius: '5px' }} />
 					</Form.Item>
 				</Form>
 			</Modal>

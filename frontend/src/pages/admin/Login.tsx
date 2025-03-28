@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Modal, Row, Typography } from 'antd';
+import { Button, Form, Input, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import AdminLayout from '@/layouts/admin';
 import { getAdminByUsername } from '@/services/api/admin';
 import { fetchLogin } from '@/services/api/auth';
 
-const { Title } = Typography;
+const { Text, Title } = Typography;
 
 interface LoginFormValues {
 	username: string;
@@ -62,35 +62,66 @@ const AdminLogin: React.FC = () => {
 		}
 	};
 
-	const handleCloseError = () => {
-		setError(null);
-	};
-
 	return (
 		<AdminLayout showSidebar={false}>
-			<Row
-				justify="center"
-				align="middle"
-				style={{ padding: '20px 0', minHeight: '60vh' }}
+			<div 
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '100vh',
+					backgroundColor: 'white', // Changed to white
+					padding: '20px'
+				}}
 			>
-				<Col xs={22} sm={18} md={12} lg={8}>
-					<div
-						style={{
-							backgroundColor: '#fff',
-							padding: '24px',
-							borderRadius: '8px',
-							boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-						}}
+				<div 
+					style={{
+						backgroundColor: 'white',
+						borderRadius: '26px',
+						border:'4px solid black',
+						boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+						width: '100%',
+						maxWidth: '400px',
+						padding: '50px'
+					}}
+				>
+					<div style={{ textAlign: 'center', marginBottom: '24px' }}>
+						
+						<Title 
+							level={3} 
+							style={{ 
+								margin: 0, 
+								marginBottom: '8px',
+								color: '#333'
+							}}
+						>
+							Sign In
+						</Title>
+						<Text 
+							type="secondary" 
+							style={{ 
+								fontSize: '14px',
+								color: '#6c757d' 
+							}}
+						>					</Text>
+					</div>
+					<Form 
+						name="login" 
+						onFinish={onFinish} 
+						layout="vertical"
 					>
-						<div style={{ textAlign: 'center', marginBottom: '8px' }}>
-							<Title
-								level={3}
+						<Form.Item
+							name="username"
+							label="Tên đăng nhập"
+							rules={[
+								{ required: true, message: 'Vui lòng nhập tên đăng nhập!' },
+							]}
+						>
+							<Input 
+								placeholder="Nhập tên đăng nhập" 
+								size="large"
 								style={{
-									margin: '4px 0',
-									fontFamily: 'cursive',
-									color: 'black',
-									backgroundColor: '#fff',
-									padding: '2px 0',
+									borderRadius: '8px'
 								}}
 							>
 								Lang La Academy
@@ -99,23 +130,46 @@ const AdminLogin: React.FC = () => {
 						<Title
 							level={2}
 							style={{ textAlign: 'center', marginBottom: '8px' }}
+
 						>
-							Đăng nhập
-						</Title>
-						<Form name="login" onFinish={onFinish} layout="vertical">
-							<Form.Item
-								label="Tên đăng nhập"
-								name="username"
-								rules={[
-									{ required: true, message: 'Vui lòng nhập tên đăng nhập!' },
-								]}
+							<Input.Password 
+								placeholder="Nhập mật khẩu" 
+								size="large"
+								style={{
+									borderRadius: '8px'
+								}}
+							/>
+						</Form.Item>
+
+						{error && (
+							<div 
+								style={{
+									backgroundColor: '#fff5f5',
+									color: '#c92a2a',
+									padding: '10px 15px',
+									borderRadius: '8px',
+									marginBottom: '16px',
+									border: '1px solid #ffc9c9'
+								}}
 							>
-								<Input placeholder="Nhập tên đăng nhập" />
-							</Form.Item>
-							<Form.Item
-								label="Mật khẩu"
-								name="password"
-								rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+								{error}
+							</div>
+						)}
+
+						<Form.Item>
+							<Button
+								type="primary"
+								htmlType="submit"
+								loading={loading}
+								block
+								style={{
+									height: '48px',
+									borderRadius: '8px',
+									backgroundColor: '#2c3e50',
+									borderColor: '#2c3e50',
+									fontSize: '16px',
+									fontWeight: 'bold'
+								}}
 							>
 								<Input.Password placeholder="Nhập mật khẩu" />
 							</Form.Item>
@@ -160,6 +214,7 @@ const AdminLogin: React.FC = () => {
 					)}
 				</Col>
 			</Row>
+
 		</AdminLayout>
 	);
 };

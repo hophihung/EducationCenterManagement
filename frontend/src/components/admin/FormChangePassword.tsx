@@ -1,7 +1,6 @@
 import { Button, Col, Form, Input, Row, Typography, message } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { adminChangePassword } from '@/services/api/admin';
 
 const { Title } = Typography;
@@ -67,24 +66,22 @@ const FormChangePassword: React.FC = () => {
 						backgroundColor: '#fff',
 						padding: '24px',
 						borderRadius: '8px',
-						boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+						boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
 					}}
 				>
-					<div style={{ textAlign: 'center', marginBottom: '8px' }}>
+					<div style={{ textAlign: 'center', marginBottom: '16px' }}>
 						<Title
 							level={3}
 							style={{
 								margin: '4px 0',
 								fontFamily: 'cursive',
 								color: 'black',
-								backgroundColor: '#fff',
-								padding: '2px 0',
 							}}
 						>
 							Lang La Academy
 						</Title>
 					</div>
-					<Title level={2} style={{ textAlign: 'center', marginBottom: '8px' }}>
+					<Title level={2} style={{ textAlign: 'center', marginBottom: '16px' }}>
 						Đổi mật khẩu
 					</Title>
 					<Form name="changePassword" onFinish={onFinish} layout="vertical">
@@ -95,7 +92,7 @@ const FormChangePassword: React.FC = () => {
 								{ required: true, message: 'Vui lòng nhập tên đăng nhập!' },
 							]}
 						>
-							<Input placeholder="Nhập tên đăng nhập" />
+							<Input placeholder="Nhập tên đăng nhập" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 						<Form.Item
 							label="Mật khẩu hiện tại"
@@ -104,7 +101,7 @@ const FormChangePassword: React.FC = () => {
 								{ required: true, message: 'Vui lòng nhập mật khẩu hiện tại!' },
 							]}
 						>
-							<Input.Password placeholder="Nhập mật khẩu hiện tại" />
+							<Input.Password placeholder="Nhập mật khẩu hiện tại" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 						<Form.Item
 							label="Mật khẩu mới"
@@ -125,7 +122,7 @@ const FormChangePassword: React.FC = () => {
 								}),
 							]}
 						>
-							<Input.Password placeholder="Nhập mật khẩu mới" />
+							<Input.Password placeholder="Nhập mật khẩu mới" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 						<Form.Item
 							label="Xác nhận mật khẩu mới"
@@ -145,7 +142,7 @@ const FormChangePassword: React.FC = () => {
 								}),
 							]}
 						>
-							<Input.Password placeholder="Xác nhận mật khẩu mới" />
+							<Input.Password placeholder="Xác nhận mật khẩu mới" style={{ borderRadius: '5px' }} />
 						</Form.Item>
 						<Form.Item>
 							<Button
@@ -155,8 +152,10 @@ const FormChangePassword: React.FC = () => {
 								block
 								style={{
 									marginTop: '8px',
+<!-- <<<<<<< hienupdate -->
 									backgroundColor: '#49BBBD',
 									borderColor: '#49BBBD',
+
 								}}
 							>
 								Đổi Mật Khẩu

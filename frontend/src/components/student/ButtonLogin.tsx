@@ -53,6 +53,7 @@ const ButtonLogin: React.FC = () => {
 				onClick={handleLogin}
 				icon={isMobile ? <LoginOutlined /> : null}
 				style={{ marginTop: '16px', backgroundColor: '#49BBBD' }}
+
 			>
 				{!isMobile && 'Đăng nhập'}
 				
@@ -63,7 +64,7 @@ const ButtonLogin: React.FC = () => {
 						Chọn phương thức đăng nhập
 					</div>
 				}
-				open={isModalOpen} // Thay visible thành open
+				open={isModalOpen}
 				onCancel={handleCancel}
 				footer={null}
 			>
@@ -75,6 +76,8 @@ const ButtonLogin: React.FC = () => {
 						width: '100%',
 						marginBottom: '15px',
 						backgroundColor: '#0cd14e',
+						border: 'none',
+						borderRadius: '5px',
 					}}
 					icon={<GoogleOutlined />}
 				>
@@ -84,7 +87,12 @@ const ButtonLogin: React.FC = () => {
 					type="primary"
 					size="large"
 					onClick={handleTeacherLogin}
-					style={{ width: '100%', marginBottom: '15px' }}
+					style={{
+						width: '100%',
+						marginBottom: '15px',
+						border: 'none',
+						borderRadius: '5px',
+					}}
 					icon={<ReadOutlined />}
 				>
 					Đăng nhập dành cho Giáo viên
@@ -93,7 +101,12 @@ const ButtonLogin: React.FC = () => {
 					type="primary"
 					size="large"
 					onClick={handleAdminLogin}
-					style={{ width: '100%', backgroundColor: '#ff2121' }}
+					style={{
+						width: '100%',
+						backgroundColor: '#ff2121',
+						border: 'none',
+						borderRadius: '5px',
+					}}
 					icon={<UserOutlined />}
 				>
 					Đăng nhập dành cho Quản trị viên
