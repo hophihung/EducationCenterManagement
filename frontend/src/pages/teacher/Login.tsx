@@ -92,7 +92,7 @@ const LoginTeacher: React.FC = () => {
 					<Col xs={22} sm={18} md={12} lg={8}>
 						<div
 							style={{
-								backgroundColor: '#fff',
+								backgroundColor: '#ffff',
 								padding: '32px',
 								borderRadius: '8px',
 								boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
@@ -100,7 +100,7 @@ const LoginTeacher: React.FC = () => {
 						>
 							<div style={{ flex: 1, textAlign: 'center' }}>
 								<Title level={3} style={{ fontFamily: 'cursive', margin: 0 }}>
-									ligevan
+									Lang La Academy
 								</Title>
 							</div>
 
@@ -141,7 +141,7 @@ const LoginTeacher: React.FC = () => {
 										htmlType="submit"
 										loading={loading}
 										block
-										style={{ marginTop: '16px', backgroundColor: 'black' }}
+										style={{ marginTop: '16px', backgroundColor: '#49BBBD' }}
 									>
 										Đăng Nhập
 									</Button>

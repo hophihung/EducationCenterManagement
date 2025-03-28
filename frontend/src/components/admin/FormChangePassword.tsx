@@ -81,7 +81,7 @@ const FormChangePassword: React.FC = () => {
 								padding: '2px 0',
 							}}
 						>
-							ligevan
+							Lang La Academy
 						</Title>
 					</div>
 					<Title level={2} style={{ textAlign: 'center', marginBottom: '8px' }}>
@@ -155,8 +155,8 @@ const FormChangePassword: React.FC = () => {
 								block
 								style={{
 									marginTop: '8px',
-									backgroundColor: 'black',
-									borderColor: 'black',
+									backgroundColor: '#49BBBD',
+									borderColor: '#49BBBD',
 								}}
 							>
 								Đổi Mật Khẩu

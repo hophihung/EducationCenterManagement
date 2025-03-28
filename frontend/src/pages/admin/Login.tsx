@@ -93,7 +93,7 @@ const AdminLogin: React.FC = () => {
 									padding: '2px 0',
 								}}
 							>
-								ligevan
+								Lang La Academy
 							</Title>
 						</div>
 						<Title
@@ -127,8 +127,8 @@ const AdminLogin: React.FC = () => {
 									block
 									style={{
 										marginTop: '8px',
-										backgroundColor: 'black',
-										borderColor: 'black',
+										backgroundColor: '#49BBBD',
+										
 									}}
 								>
 									Đăng Nhập

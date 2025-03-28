@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ leftComponent, rightComponent }) => {
 				<div className="center-title">
 					<a href="/">
 						<Title level={3} className="title">
-							Lang La Academy
+							📜𝓛𝓪𝓷𝓰 𝓛𝓪 𝓐𝓬𝓪𝓭𝓮𝓶𝔂 🖋️
 						</Title>
 					</a>
 				</div>
