@@ -9,7 +9,8 @@ const Footer: React.FC = () => {
 		<AntFooter
 			style={{
 				textAlign: 'center',
-				padding: 0,
+				backgroundColor: '#001529',
+				padding: 30,
 				boxShadow: '0 -2px 8px rgba(0, 0, 0, 0.1)',
 				width: '100%',
 				bottom: 0,
@@ -17,20 +18,9 @@ const Footer: React.FC = () => {
 				zIndex: 1,
 			}}
 		>
-			<Title level={5} style={{ margin: '10px 0 0 0' }}>
-				Copyright © ligevan 2024
+			<Title level={5} style={{ margin: '10px 0 0 0' ,color: 'white'}}>
+				Copyright © LangLA_Academy 2024
 			</Title>
-			<a
-				href="https://github.com/hardingadonis/ligevan"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<img
-					alt="contributors"
-					src="https://contrib.rocks/image?repo=hardingadonis/ligevan"
-					style={{ transform: 'scale(0.65)' }}
-				/>
-			</a>
 		</AntFooter>
 	);
 };
