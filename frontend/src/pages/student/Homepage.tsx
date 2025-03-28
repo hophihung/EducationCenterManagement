@@ -10,8 +10,8 @@ const HomepageStudent: React.FC = () => {
 
 	return (
 		<StudentLayoutNoSidebar onSelectCenter={setSelectedCenter}>
-			<Typography.Title level={1} style={{ textAlign: 'center' }}>
-				「知識を得て、努力し、夢を叶える」
+			<Typography.Title level={1} style={{ textAlign: 'center',fontFamily: 'cursive' }}>
+				「One Day or Day One」
 			</Typography.Title>
 			<ListCourse selectedCenter={selectedCenter} />
 		</StudentLayoutNoSidebar>
