@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "671115ee30c0819ba109d543"
   },
-  "code": "LIGEVAN-JLPTN5",
+  "code": "Academy-JLPTN5",
   "title": "Khóa luyện thi cấp tốc JLPT N5",
   "description": "Luyện thi cấp tốc, đạt chứng chỉ cấp quốc gia!",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -20,7 +20,7 @@
   "_id": {
     "$oid": "6711163130c0819ba109d548"
   },
-  "code": "LIGEVAN-JLPTN4",
+  "code": "Academy-JLPTN4",
   "title": "Khóa luyện thi cấp tốc JLPT N4",
   "description": "Luyện thi cấp tốc, đạt chứng chỉ cấp quốc gia!",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -38,7 +38,7 @@
   "_id": {
     "$oid": "6711163e30c0819ba109d54b"
   },
-  "code": "LIGEVAN-JLPTN3",
+  "code": "Academy-JLPTN3",
   "title": "Khóa luyện thi cấp tốc JLPT N3",
   "description": "Luyện thi cấp tốc, đạt chứng chỉ cấp quốc gia!",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -56,7 +56,7 @@
   "_id": {
     "$oid": "6711164930c0819ba109d54e"
   },
-  "code": "LIGEVAN-JLPTN2",
+  "code": "Academy-JLPTN2",
   "title": "Khóa luyện thi cấp tốc JLPT N2",
   "description": "Luyện thi cấp tốc, đạt chứng chỉ cấp quốc gia!",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -74,7 +74,7 @@
   "_id": {
     "$oid": "6711165930c0819ba109d551"
   },
-  "code": "LIGEVAN-JLPTN1",
+  "code": "Academy-JLPTN1",
   "title": "Khóa luyện thi cấp tốc JLPT N1",
   "description": "Luyện thi cấp tốc, đạt chứng chỉ cấp quốc gia!",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -92,7 +92,7 @@
   "_id": {
     "$oid": "67273650525d9f80c5682d50"
   },
-  "code": "LIGEVAN-N5",
+  "code": "Academy-N5",
   "title": "Khóa học tiếng Nhật N5",
   "description": "Khóa học tiếng Nhật N5 cho người mới bắt đầu",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -110,7 +110,7 @@
   "_id": {
     "$oid": "67273669525d9f80c5682d5e"
   },
-  "code": "LIGEVAN-N4",
+  "code": "Academy-N4",
   "title": "Khóa học tiếng Nhật N4",
   "description": "Khóa học tiếng Nhật N4",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -128,7 +128,7 @@
   "_id": {
     "$oid": "672736a3525d9f80c5682d6a"
   },
-  "code": "LIGEVAN-N3",
+  "code": "Academy-N3",
   "title": "Khóa học tiếng Nhật N3",
   "description": "Khóa học tiếng Nhật N3",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -146,7 +146,7 @@
   "_id": {
     "$oid": "672736b4525d9f80c5682d6f"
   },
-  "code": "LIGEVAN-N2",
+  "code": "Academy-N2",
   "title": "Khóa học tiếng Nhật N2",
   "description": "Khóa học tiếng Nhật N2",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -164,7 +164,7 @@
   "_id": {
     "$oid": "672736c9525d9f80c5682d74"
   },
-  "code": "LIGEVAN-N1",
+  "code": "Academy-N1",
   "title": "Khóa học tiếng Nhật N1",
   "description": "Khóa học tiếng Nhật N1",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -182,7 +182,7 @@
   "_id": {
     "$oid": "6727376e525d9f80c5682d85"
   },
-  "code": "LIGEVAN-KAIWA1",
+  "code": "Academy-KAIWA1",
   "title": "Khóa học giao tiếp tiếng Nhật phổ thông",
   "description": "Khoá học giao tiếp tiếng Nhật phổ thông với các tình huống đối thoại hàng ngày.",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -200,7 +200,7 @@
   "_id": {
     "$oid": "67273797525d9f80c5682d90"
   },
-  "code": "LIGEVAN-KAIWA2",
+  "code": "Academy-KAIWA2",
   "title": "Khóa học giao tiếp tiếng Nhật chuyên môn",
   "description": "Khóa học giao tiếp tiếng Nhật chuyên môn",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -218,7 +218,7 @@
   "_id": {
     "$oid": "67273918525d9f80c5682dd2"
   },
-  "code": "LIGEVAN-JAPANWORK",
+  "code": "Academy-JAPANWORK",
   "title": "Khóa học xuất khẩu lao động",
   "description": "Khoá học tiếng Nhật để xuất khẩu lao động",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",
@@ -236,7 +236,7 @@
   "_id": {
     "$oid": "67273a0b525d9f80c5682e47"
   },
-  "code": "LIGEVAN-JAPAN",
+  "code": "Academy-JAPAN",
   "title": "Khoá du học Nhật Bản",
   "description": "Khoá du học Nhật Bản",
   "thumbnail": "https://raw.githubusercontent.com/hardingadonis/hardingadonis/refs/heads/main/imgs/peaceful-banner.gif",

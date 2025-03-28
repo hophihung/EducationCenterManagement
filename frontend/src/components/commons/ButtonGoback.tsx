@@ -26,7 +26,7 @@ const ButtonGoBack: React.FC<ButtonGoBackProps> = ({ link, history }) => {
 		<Button
 			style={{
 				backgroundColor: '#rgba(73, 187, 189, 1)',
-				color: 'white',
+				color: 'black',
 			}}
 			onClick={handleGoBack}
 		>

@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "671114c530c0819ba109d53d"
   },
-  "code": "LIGEVANKHAITRUONG",
+  "code": "academyKHAITRUONG",
   "title": "Ưu đãi khai trương",
   "description": "Ưu đãi dành cho tân học viên!",
   "value": 50,
@@ -25,7 +25,7 @@
   "_id": {
     "$oid": "6711152930c0819ba109d540"
   },
-  "code": "LIGEVANTET2025",
+  "code": "academyTET2025",
   "title": "Ưu đãi đầu năm mới 2025",
   "description": "Ưu đãi dành cho tân học viên vào đầu năm Ất Tỵ 2025!",
   "value": 30,
@@ -48,7 +48,7 @@
   "_id": {
     "$oid": "6727368f525d9f80c5682d65"
   },
-  "code": "LIGEVANWEEKEND",
+  "code": "academyWEEKEND",
   "title": "Ưu đãi cuối tuần",
   "description": "Ưu đãi 20% cho các khóa học khi đăng ký vào cuối tuần!",
   "value": 10,
@@ -71,7 +71,7 @@
   "_id": {
     "$oid": "672736ca525d9f80c5682d7c"
   },
-  "code": "LIGEVANBLACKFRIDAY",
+  "code": "academyBLACKFRIDAY",
   "title": "Ưu đãi Black Friday",
   "description": "Giảm giá lớn 20% chỉ trong ngày Black Friday!",
   "value": 20,
@@ -94,7 +94,7 @@
   "_id": {
     "$oid": "67273775525d9f80c5682d8b"
   },
-  "code": "LIGEVANCHRISTMAS",
+  "code": "academyCHRISTMAS",
   "title": "Ưu đãi Giáng Sinh",
   "description": "Giảm giá 35% cho tất cả khóa học mừng Giáng Sinh!",
   "value": 35,
@@ -117,7 +117,7 @@
   "_id": {
     "$oid": "672737dc525d9f80c5682d96"
   },
-  "code": "LIGEVANBACKTOSCHOOL25",
+  "code": "academyBACKTOSCHOOL25",
   "title": "Chào mừng mùa tựu trường",
   "description": "Nhận ngay ưu đãi giảm 25% cho học viên đăng ký khóa học mới trong mùa tựu trường!",
   "value": 25,
@@ -140,7 +140,7 @@
   "_id": {
     "$oid": "6727384e525d9f80c5682da0"
   },
-  "code": "LIGEVANSINGLES",
+  "code": "academySINGLES",
   "title": "Ưu đãi Ngày Độc Thân",
   "description": "Nhận ưu đãi 33% khi đăng ký vào Ngày Độc Thân 11/11!",
   "value": 33,
