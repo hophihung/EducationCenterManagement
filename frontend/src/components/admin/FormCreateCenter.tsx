@@ -134,7 +134,7 @@ const CenterForm: React.FC<CenterFormProps> = ({ onSuccess }) => {
 								>
 									<Input
 										placeholder="Nhập tên (ví dụ: username)"
-										addonAfter="@Academy.edu.vn"
+										addonAfter="@academy.edu.vn"
 									/>
 								</Form.Item>
 
