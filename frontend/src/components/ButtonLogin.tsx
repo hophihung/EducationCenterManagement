@@ -66,7 +66,6 @@ const ButtonLogin: React.FC = () => {
 
 	return (
 		<>
-<!-- <<<<<<< hienupdate -->
 			<Button type="primary" onClick={showModal} >
 
 				Đăng nhập

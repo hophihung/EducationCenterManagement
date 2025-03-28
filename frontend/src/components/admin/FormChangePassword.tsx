@@ -152,7 +152,7 @@ const FormChangePassword: React.FC = () => {
 								block
 								style={{
 									marginTop: '8px',
-<!-- <<<<<<< hienupdate -->
+
 									backgroundColor: '#49BBBD',
 									borderColor: '#49BBBD',
 

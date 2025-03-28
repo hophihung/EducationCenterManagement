@@ -49,10 +49,11 @@ const ButtonLogin: React.FC = () => {
 	return (
 		<>
 			<Button
+			
 				type="primary"
 				onClick={handleLogin}
 				icon={isMobile ? <LoginOutlined /> : null}
-				style={{ marginTop: '16px', backgroundColor: '#49BBBD' }}
+				style={{ marginTop: '8px', backgroundColor: 'black',marginBottom:'8px' }}
 
 			>
 				{!isMobile && 'Đăng nhập'}
