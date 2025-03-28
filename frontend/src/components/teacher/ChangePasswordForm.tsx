@@ -92,10 +92,12 @@ const ChangePasswordForm: React.FC = () => {
 						}}
 					>
 						<div style={{ textAlign: 'center' }}>
-							<Title level={2}>Đổi mật khẩu</Title>
-							<Title level={3} style={{ fontFamily: 'cursive', margin: 0 }}>
+							<Title level={3} style={{ fontFamily: 'cursive', margin: 0  }}>
+
 								Lang La Academy
 							</Title>
+							<Title level={2}>Đổi mật khẩu</Title>
+
 						</div>
 
 						<Form.Item
@@ -166,9 +168,9 @@ const ChangePasswordForm: React.FC = () => {
 								loading={loading}
 								style={{
 									width: '100%',
-									backgroundColor: 'black',
-									border: 'none',
-									borderRadius: '5px',
+									backgroundColor: '#49BBBD',
+									borderColor: '#49BBBD',
+
 								}}
 								icon={<EditOutlined />}
 							>

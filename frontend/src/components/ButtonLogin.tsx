@@ -66,19 +66,17 @@ const ButtonLogin: React.FC = () => {
 
 	return (
 		<>
+<!-- <<<<<<< hienupdate -->
+			<Button type="primary" onClick={showModal} >
+
+				Đăng nhập
+			</Button>
 			<Button
 				type="primary"
-				style={{
-					background: 'linear-gradient(90deg, #4CAF50, #8BC34A)',
-					border: 'none',
-					color: '#fff',
-					borderRadius: '30px',
-					padding: '10px 20px',
-					fontWeight: 'bold',
-				}}
+				style={{ marginTop: '16px', backgroundColor: '#49BBBD' }}
 				onClick={showModal}
 			>
-				Đăng nhập
+				Đăng Nhập
 			</Button>
 
 			<Modal {...modalProps}>

@@ -123,12 +123,14 @@ const AdminLogin: React.FC = () => {
 								style={{
 									borderRadius: '8px'
 								}}
-							/>
-						</Form.Item>
-						<Form.Item
-							name="password"
-							label="Mật khẩu"
-							rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+							>
+								Lang La Academy
+							</Title>
+						</div>
+						<Title
+							level={2}
+							style={{ textAlign: 'center', marginBottom: '8px' }}
+
 						>
 							<Input.Password 
 								placeholder="Nhập mật khẩu" 
@@ -169,12 +171,50 @@ const AdminLogin: React.FC = () => {
 									fontWeight: 'bold'
 								}}
 							>
-								Đăng Nhập
-							</Button>
-						</Form.Item>
-					</Form>
-				</div>
-			</div>
+								<Input.Password placeholder="Nhập mật khẩu" />
+							</Form.Item>
+							<Form.Item>
+								<Button
+									type="primary"
+									htmlType="submit"
+									loading={loading}
+									block
+									style={{
+										marginTop: '8px',
+										backgroundColor: '#49BBBD',
+										
+									}}
+								>
+									Đăng Nhập
+								</Button>
+							</Form.Item>
+						</Form>
+					</div>
+					{error && (
+						<Modal
+							title="Đăng nhập thất bại"
+							visible={!!error}
+							onCancel={handleCloseError}
+							footer={[
+								<Button
+									key="ok"
+									onClick={handleCloseError}
+									style={{
+										backgroundColor: 'black',
+										borderColor: 'black',
+										color: 'white',
+									}}
+								>
+									OK
+								</Button>,
+							]}
+						>
+							<p>{error}</p>
+						</Modal>
+					)}
+				</Col>
+			</Row>
+
 		</AdminLayout>
 	);
 };

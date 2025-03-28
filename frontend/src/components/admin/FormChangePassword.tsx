@@ -152,9 +152,10 @@ const FormChangePassword: React.FC = () => {
 								block
 								style={{
 									marginTop: '8px',
-									background: 'linear-gradient(90deg, #4CAF50, #8BC34A)',
-									border: 'none',
-									borderRadius: '5px',
+<!-- <<<<<<< hienupdate -->
+									backgroundColor: '#49BBBD',
+									borderColor: '#49BBBD',
+
 								}}
 							>
 								Đổi Mật Khẩu

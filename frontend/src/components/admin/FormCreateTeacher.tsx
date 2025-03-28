@@ -82,7 +82,9 @@ const TeacherForm: React.FC = () => {
 		avatar: string;
 		classes: string[];
 	}) => {
-		const email = `${values.email}@Academy.edu.vn`;
+<!-- <<<<<<< hienupdate -->
+		const email = `${values.email}@academy.edu.vn`;
+
 
 		const isDuplicateEmail = teachers.some(
 			(existingTeacher) => existingTeacher.email === email,
@@ -216,7 +218,8 @@ const TeacherForm: React.FC = () => {
 										>
 											<Input
 												placeholder="Nhập tên (ví dụ: username)"
-												addonAfter="@Academy.edu.vn"
+												addonAfter="@academy.edu.vn"
+
 											/>
 										</Form.Item>
 									</Col>
