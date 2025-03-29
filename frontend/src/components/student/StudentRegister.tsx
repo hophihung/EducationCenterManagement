@@ -224,7 +224,7 @@ const StudentRegister: React.FC = () => {
 				<Col span={2}>
 					<Button
 						onClick={handleGoBack}
-						style={{ backgroundColor: '#001529', color: 'white' }}
+						style={{ backgroundColor: '#001529', color: 'black' }}
 					>
 						<ArrowLeftOutlined style={{ marginRight: '8px' }} />
 						Quay Lại

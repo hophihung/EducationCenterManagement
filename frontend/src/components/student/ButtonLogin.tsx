@@ -53,7 +53,7 @@ const ButtonLogin: React.FC = () => {
 				type="primary"
 				onClick={handleLogin}
 				icon={isMobile ? <LoginOutlined /> : null}
-				style={{ marginTop: '8px', backgroundColor: 'black',marginBottom:'8px' }}
+				style={{ marginTop: '8px', backgroundColor: 'white',marginBottom:'8px',color:'black' }}
 
 			>
 				{!isMobile && 'Đăng nhập'}
