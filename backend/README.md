@@ -1,12 +1,3 @@
-# ligevan's backend
-
-![GitHub contributors](https://img.shields.io/github/contributors/hardingadonis/ligevan)
-![GitHub top language](https://img.shields.io/github/languages/top/hardingadonis/ligevan)
-![GitHub repo size](https://img.shields.io/github/repo-size/hardingadonis/ligevan)
-![GitHub License](https://img.shields.io/github/license/hardingadonis/ligevan)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hardingadonis_ligevan&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hardingadonis_ligevan)
-
-> 「学び、練習し、成功する」
 
 ## Configuration
 
